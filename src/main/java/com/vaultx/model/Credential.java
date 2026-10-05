@@ -32,5 +32,13 @@ public class Credential {
     public String getPassword(){
         return password;
     }
+
+    public void setUsername(String updatedUsername){
+        this.username = updatedUsername;
+    }
+
+    public void setPassword(String updatedPassword){
+        this.password = updatedPassword;
+    }
 }
 

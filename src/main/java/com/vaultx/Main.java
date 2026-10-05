@@ -1,9 +1,9 @@
 /* This is not a final project, this is subjected to be changed as more things will be addded, this is merely a prototype verrsion */
 
 package com.vaultx;
-import com.vaultx.model.Credential;
-import java.util.ArrayList;
+
 import java.util.Scanner;
+import com.vaultx.service.VaultService;
 
 public class Main {
     public static void main(String[] args) {
@@ -11,40 +11,60 @@ public class Main {
         // scanner to input credential from user
         Scanner sc = new Scanner(System.in);
 
-        // using arrayList so we can dynamicay add objetcs
-        ArrayList<Credential> credentialList = new ArrayList<>();
+        // creatred vaultx service to manage the credential
+        VaultService vault = new VaultService();
 
+        int choice;
+        do{
 
-        // will delete these pre stack credential these are just for testing purpose
-        credentialList.add(new Credential(1, "git", "shishir", "Testpassword123!"));
-        credentialList.add(new Credential(2, "gmail", "shishir", "Testpassword123!"));
-        credentialList.add(new Credential(3, "amazon", "shishir", "Testpassword123!"));
+        // printing the menu 
+        System.out.println("========== VaultX ==========");
+        System.out.println("1. Add Credential");
+        System.out.println("2. View Credentials");
+        System.out.println("3. Search Credential");
+        System.out.println("4. Update Credential");
+        System.out.println("5. Delete Credential");
+        System.out.println("6. Exit");
+        System.out.println("=============================");
+        choice = sc.nextInt();  
 
-        //entering service name 
-        System.out.print("enter Service name : ");
-        String service = sc.next();
+        switch(choice){
+            case 1 : 
+                // calling function to add credential
+                vault.addCredential(sc);
+                break;
 
-        // entering username 
-        System.out.print("enter user name : ");
-        String name = sc.next();
+            case 2 :
+                // calling function to view credential
+                vault.viewCredentials();
+                break;
 
-        System.out.print("enter password : ");
-        String pass = sc.next();
+            case 3 : 
+                //search Credential
+                vault.searchCredential(sc);
+                break;
 
-        int size =  credentialList.size();
-        size++;
+            case 4 :
+                //update Credential
+                vault.updateCredential(sc);
+                break;
 
-        credentialList.add(new Credential(size, service, name, pass));
+            case 5 : 
+                //delete credential
+                vault.deleteCredential(sc);
+                break;
 
-        //print credential
-        for (Credential element : credentialList) {
-            System.out.println("=======CREDENTIALS=======");            
-            System.out.println(element.getId());
-            System.out.println(element.getUsername());
-            System.out.println(element.getServiceName());
-            System.out.println(element.getUsername());
-            }
+            case 6:
+                System.out.println("Exiting VaultX....");
+                break;
+            
+            default :
+                System.out.println("enter a valid operation !!");
+
         }
+    }while(choice != 6);
 
+    }
 }
+
 
