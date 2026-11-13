@@ -1,44 +1,100 @@
 package com.vaultx.model;
 
-
-// first console prototype
 public class Credential {
 
-    private int id;
-    private String serviceName;
+    private long credentialId;
+    private String title;
     private String username;
-    private String password;
+    private char[] password;
+    private String url;
+    private String notes;
 
-    public Credential(int id, String serviceName, String username, String password){
-        this.id = id;
-        this.serviceName = serviceName;
+    public Credential(
+            long credentialId,
+            String title,
+            String username,
+            char[] password,
+            String url,
+            String notes) {
+
+        this.credentialId = credentialId;
+        this.title = title;
         this.username = username;
         this.password = password;
-        
+        this.url = url;
+        this.notes = notes;
     }
 
-    public int getId(){
-        return id;
+    public Credential(
+            String title,
+            String username,
+            char[] password,
+            String url,
+            String notes) {
+
+        this(
+                0,
+                title,
+                username,
+                password,
+                url,
+                notes
+        );
     }
 
-    public String getServiceName(){
-        return serviceName;
+    // =====================================================
+    // GETTERS
+    // =====================================================
+
+    public long getCredentialId() {
+        return credentialId;
     }
 
-    public String getUsername(){
+    public String getTitle() {
+        return title;
+    }
+
+    public String getUsername() {
         return username;
     }
 
-    public String getPassword(){
+    public char[] getPassword() {
         return password;
     }
 
-    public void setUsername(String updatedUsername){
-        this.username = updatedUsername;
+    public String getUrl() {
+        return url;
     }
 
-    public void setPassword(String updatedPassword){
-        this.password = updatedPassword;
+    public String getNotes() {
+        return notes;
+    }
+
+    // =====================================================
+    // SETTERS
+    // =====================================================
+
+    public void setCredentialId(long credentialId) {
+        this.credentialId = credentialId;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public void setPassword(char[] password) {
+        this.password = password;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
+    }
+
+    public void setNotes(String notes) {
+        this.notes = notes;
     }
 }
-
